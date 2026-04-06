@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Controle Financeiro - Login</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- TELA DE LOGIN -->
+<div id="telaLogin" class="tela-login">
+    <div class="login-container">
+        <div class="login-header">
+            <h1>💰 Controle Financeiro</h1>
+            <p>Gerencie suas finanças com segurança</p>
+        </div>
+        
+        <form id="formLogin" class="login-form">
+            <div class="input-group">
+                <label>📧 E-mail</label>
+                <input type="email" id="loginEmail" placeholder="seu@email.com" required>
+            </div>
+            
+            <div class="input-group">
+                <label>🔒 Senha</label>
+                <input type="password" id="loginSenha" placeholder="Digite sua senha" required>
+            </div>
+            
+            <button type="submit" class="btn-login">Entrar</button>
+            
+            <div class="login-links">
+                <a href="#" onclick="mostrarRegistro()">Criar nova conta</a>
+                <a href="#" onclick="mostrarRecuperarSenha()">Esqueceu a senha?</a>
+            </div>
+        </form>
+        
+        <div class="demo-info">
+            <p>📱 Conta Demo:</p>
+            <p>Email: demo@financeiro.com</p>
+            <p>Senha: 123456</p>
+        </div>
+    </div>
+</div>
+
+<!-- TELA DE REGISTRO -->
+<div id="telaRegistro" class="tela-login" style="display: none;">
+    <div class="login-container">
+        <div class="login-header">
+            <h1>💰 Criar Conta</h1>
+            <p>Cadastre-se para começar</p>
+        </div>
+        
+        <form id="formRegistro" class="login-form">
+            <div class="input-group">
+                <label>👤 Nome</label>
+                <input type="text" id="regNome" placeholder="Seu nome" required>
+            </div>
+            
+            <div class="input-group">
+                <label>📧 E-mail</label>
+                <input type="email" id="regEmail" placeholder="seu@email.com" required>
+            </div>
+            
+            <div class="input-group">
+                <label>🔒 Senha</label>
+                <input type="password" id="regSenha" placeholder="Mínimo 6 caracteres" required>
+            </div>
+            
+            <div class="input-group">
+                <label>🔒 Confirmar Senha</label>
+                <input type="password" id="regConfirmarSenha" placeholder="Digite a senha novamente" required>
+            </div>
+            
+            <button type="submit" class="btn-login">Criar Conta</button>
+            
+            <div class="login-links">
+                <a href="#" onclick="mostrarLogin()">Já tenho uma conta</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- TELA DE RECUPERAR SENHA -->
+<div id="telaRecuperar" class="tela-login" style="display: none;">
+    <div class="login-container">
+        <div class="login-header">
+            <h1>🔑 Recuperar Senha</h1>
+            <p>Enviaremos um link para seu e-mail</p>
+        </div>
+        
+        <form id="formRecuperar" class="login-form">
+            <div class="input-group">
+                <label>📧 E-mail</label>
+                <input type="email" id="recEmail" placeholder="seu@email.com" required>
+            </div>
+            
+            <button type="submit" class="btn-login">Enviar Link</button>
+            
+            <div class="login-links">
+                <a href="#" onclick="mostrarLogin()">Voltar para o login</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- SISTEMA PRINCIPAL (será mostrado após login) -->
+<div id="sistemaPrincipal" style="display: none;">
+<div class="container">
+<div class="user-info">
+    <span>👋 Olá, <span id="userNome"></span>!</span>
+    <button onclick="logout()" class="btn-logout">🚪 Sair</button>
+</div>
+
+<h1>💰 Controle Financeiro</h1>
+
+<!-- Resto do seu conteúdo existente aqui -->
+<div class="abas">
+<button id="btnGeral" class="active" onclick="trocarAba('geral')">Geral</button>
+<button id="btnBeneficios" onclick="trocarAba('beneficios')">Benefícios</button>
+<button id="btnFatura" onclick="trocarAba('fatura')">Fatura</button>
+</div>
+
+<!-- ABA GERAL -->
+<div id="abaGeral" class="aba ativa">
+
+<div class="resumo">
+<div class="card entrada"><h3>Entradas</h3><p id="totalEntrada">R$ 0</p></div>
+<div class="card saida"><h3>Saídas</h3><p id="totalSaida">R$ 0</p></div>
+<div class="card saldo"><h3>Saldo</h3><p id="saldoFinal">R$ 0</p></div>
+</div>
+
+<form id="formGasto">
+<input id="descricao" placeholder="Descrição" required>
+<input id="valor" type="number" step="0.01" placeholder="Valor" required>
+
+<select id="tipo" required>
+<option value="">Tipo</option>
+<option value="entrada">Entrada</option>
+<option value="saida">Saída</option>
+</select>
+
+<select id="banco">
+<option value="">Banco</option>
+<option>Nubank</option>
+<option>Itaú</option>
+<option>Inter</option>
+<option>Santander</option>
+<option>Caixa</option>
+<option>Bradesco</option>
+</select>
+
+<select id="modalidade" required>
+<option value="">Modalidade</option>
+<option>Dinheiro</option>
+<option>Débito</option>
+<option>Crédito</option>
+<option>Pix</option>
+<option>VR</option>
+<option>VA</option>
+<option>VT</option>
+</select>
+
+<input id="data" type="date" required>
+<button type="submit">Adicionar</button>
+</form>
+
+<!-- FILTROS -->
+<div class="checkbox-group">
+<div onclick="toggleFiltros()" class="filtro-titulo">
+<h3>🔍 Filtrar</h3>
+<span id="iconeFiltro">▼</span>
+</div>
+
+<div id="filtrosContainer">
+    
+<div>
+<label>Banco</label>
+<div id="filtroBanco">
+<label><input type="checkbox" value="Nubank"> <span>Nubank</span></label>
+<label><input type="checkbox" value="Itaú"> <span>Itaú</span></label>
+<label><input type="checkbox" value="Inter"> <span>Inter</span></label>
+<label><input type="checkbox" value="Santander"> <span>Santander</span></label>
+<label><input type="checkbox" value="Caixa"> <span>Caixa</span></label>
+<label><input type="checkbox" value="Bradesco"> <span>Bradesco</span></label>
+</div>
+</div>
+
+<div>
+<label>Modalidade</label>
+<div id="filtroModalidade">
+<label><input type="checkbox" value="Dinheiro"> <span>Dinheiro</span></label>
+<label><input type="checkbox" value="Débito"> <span>Débito</span></label>
+<label><input type="checkbox" value="Crédito"> <span>Crédito</span></label>
+<label><input type="checkbox" value="Pix"> <span>Pix</span></label>
+<label><input type="checkbox" value="VR"> <span>VR</span></label>
+<label><input type="checkbox" value="VA"> <span>VA</span></label>
+<label><input type="checkbox" value="VT"> <span>VT</span></label>
+</div>
+</div>
+
+<div>
+<label>Tipo</label>
+<div id="filtroTipo">
+<label><input type="checkbox" value="entrada"> <span class="verde">Entrada</span></label>
+<label><input type="checkbox" value="saida"> <span class="vermelho">Saída</span></label>
+</div>
+</div>
+
+<div class="botoes-filtro">
+<button type="button" id="btnAplicarFiltro">Aplicar</button>
+<button type="button" id="btnLimparFiltro">Limpar</button>
+</div>
+
+</div>
+</div>
+
+<div id="contadorResultados"></div>
+
+<table>
+<thead>
+<tr>
+<th>Descrição</th>
+<th>Valor</th>
+<th>Tipo</th>
+<th>Modalidade</th>
+<th>Banco</th>
+<th>Data</th>
+<th>Ação</th>
+</tr>
+</thead>
+<tbody id="listaGastos"></tbody>
+</table>
+
+</div>
+
+<!-- BENEFICIOS -->
+<div id="abaBeneficios" class="aba">
+<div class="fatura-cards">
+<div class="beneficio-card vr-card" onclick="filtrarBeneficio('VR')">
+<h3>VR - Vale Refeição</h3>
+<p>Saldo Atual: <span id="vrSaldo">R$ 0,00</span></p>
+<p class="detalhe">Entradas - Saídas</p>
+<p class="detalhe" style="font-size: 10px; margin-top: 5px;">👆 Clique para ver transações</p>
+</div>
+<div class="beneficio-card va-card" onclick="filtrarBeneficio('VA')">
+<h3>VA - Vale Alimentação</h3>
+<p>Saldo Atual: <span id="vaSaldo">R$ 0,00</span></p>
+<p class="detalhe">Entradas - Saídas</p>
+<p class="detalhe" style="font-size: 10px; margin-top: 5px;">👆 Clique para ver transações</p>
+</div>
+<div class="beneficio-card vt-card" onclick="filtrarBeneficio('VT')">
+<h3>VT - Vale Transporte</h3>
+<p>Saldo Atual: <span id="vtSaldo">R$ 0,00</span></p>
+<p class="detalhe">Entradas - Saídas</p>
+<p class="detalhe" style="font-size: 10px; margin-top: 5px;">👆 Clique para ver transações</p>
+</div>
+</div>
+
+<!-- FILTROS DOS BENEFÍCIOS -->
+<div class="filtro-container">
+<div onclick="toggleFiltrosBeneficio()" class="filtro-header">
+<h3>🔍 Filtrar Transações</h3>
+<span id="iconeFiltroBeneficio">▼</span>
+</div>
+
+<div id="filtrosBeneficioContent" class="filtros-content">
+    <div class="filtros-grid">
+        <div class="filtro-group">
+            <label>📅 Período</label>
+            <div class="filtro-datas">
+                <input type="date" id="filtroBeneficioDataInicio" placeholder="Data inicial">
+                <span>até</span>
+                <input type="date" id="filtroBeneficioDataFim" placeholder="Data final">
+            </div>
+        </div>
+
+        <div class="filtro-group">
+            <label>💰 Valor</label>
+            <div class="filtro-valores">
+                <input type="number" step="0.01" id="filtroBeneficioValorMin" placeholder="Mínimo">
+                <span>até</span>
+                <input type="number" step="0.01" id="filtroBeneficioValorMax" placeholder="Máximo">
+            </div>
+        </div>
+
+        <div class="filtro-group">
+            <label>🔎 Descrição</label>
+            <input type="text" id="filtroBeneficioDescricao" placeholder="Buscar por descrição..." class="filtro-input-full">
+        </div>
+
+        <div class="filtro-group">
+            <label>📊 Tipo</label>
+            <select id="filtroBeneficioTipo" class="filtro-select">
+                <option value="todos">Todos</option>
+                <option value="entrada">Entradas</option>
+                <option value="saida">Saídas</option>
+            </select>
+        </div>
+
+        <div class="filtro-group">
+            <label>📊 Ordenar por</label>
+            <select id="filtroBeneficioOrdenar" class="filtro-select">
+                <option value="data_desc">Data mais recente</option>
+                <option value="data_asc">Data mais antiga</option>
+                <option value="valor_desc">Maior valor</option>
+                <option value="valor_asc">Menor valor</option>
+                <option value="descricao_asc">Descrição (A-Z)</option>
+                <option value="descricao_desc">Descrição (Z-A)</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="filtro-actions">
+        <button type="button" id="btnAplicarFiltroBeneficio" class="btn-aplicar">Aplicar Filtros</button>
+        <button type="button" id="btnLimparFiltroBeneficio" class="btn-limpar">Limpar Filtros</button>
+    </div>
+</div>
+</div>
+
+<div class="resultado-area">
+    <div class="resultado-header">
+        <h4>Transações do Benefício</h4>
+        <div id="beneficioFiltroAtivo" class="banco-ativo"></div>
+        <div id="filtrosAtivosBeneficio" class="filtros-ativos"></div>
+    </div>
+
+    <div class="tabela-container">
+        <table style="width: 100%;">
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th>Tipo</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody id="listaBeneficioFiltrado"></tbody>
+        </table>
+    </div>
+</div>
+</div>
+
+<!-- FATURA -->
+<div id="abaFatura" class="aba">
+<div class="fatura-cards">
+<div class="card card-nubank" onclick="filtrarBancoCredito('Nubank')">
+<h3>Nubank</h3>
+<p>Fatura Atual: <span id="faturaNubank">R$ 0,00</span></p>
+<p class="detalhe" style="font-size: 10px; margin-top: 5px;">👆 Clique para ver compras</p>
+</div>
+<div class="card card-itau" onclick="filtrarBancoCredito('Itaú')">
+<h3>Itaú</h3>
+<p>Fatura Atual: <span id="faturaItau">R$ 0,00</span></p>
+<p class="detalhe" style="font-size: 10px; margin-top: 5px;">👆 Clique para ver compras</p>
+</div>
+<div class="card card-santander" onclick="filtrarBancoCredito('Santander')">
+<h3>Santander</h3>
+<p>Fatura Atual: <span id="faturaSantander">R$ 0,00</span></p>
+<p class="detalhe" style="font-size: 10px; margin-top: 5px;">👆 Clique para ver compras</p>
+</div>
+</div>
+
+<!-- FILTROS DA FATURA -->
+<div class="filtro-container">
+<div onclick="toggleFiltrosFatura()" class="filtro-header">
+<h3>🔍 Filtrar Compras</h3>
+<span id="iconeFiltroFatura">▼</span>
+</div>
+
+<div id="filtrosFaturaContent" class="filtros-content">
+    <div class="filtros-grid">
+        <div class="filtro-group">
+            <label>📅 Período</label>
+            <div class="filtro-datas">
+                <input type="date" id="filtroDataInicio" placeholder="Data inicial">
+                <span>até</span>
+                <input type="date" id="filtroDataFim" placeholder="Data final">
+            </div>
+        </div>
+
+        <div class="filtro-group">
+            <label>💰 Valor</label>
+            <div class="filtro-valores">
+                <input type="number" step="0.01" id="filtroValorMin" placeholder="Mínimo">
+                <span>até</span>
+                <input type="number" step="0.01" id="filtroValorMax" placeholder="Máximo">
+            </div>
+        </div>
+
+        <div class="filtro-group">
+            <label>🔎 Descrição</label>
+            <input type="text" id="filtroDescricao" placeholder="Buscar por descrição..." class="filtro-input-full">
+        </div>
+
+        <div class="filtro-group">
+            <label>📊 Ordenar por</label>
+            <select id="filtroOrdenar" class="filtro-select">
+                <option value="data_desc">Data mais recente</option>
+                <option value="data_asc">Data mais antiga</option>
+                <option value="valor_desc">Maior valor</option>
+                <option value="valor_asc">Menor valor</option>
+                <option value="descricao_asc">Descrição (A-Z)</option>
+                <option value="descricao_desc">Descrição (Z-A)</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="filtro-actions">
+        <button type="button" id="btnAplicarFiltroFatura" class="btn-aplicar">Aplicar Filtros</button>
+        <button type="button" id="btnLimparFiltroFatura" class="btn-limpar">Limpar Filtros</button>
+    </div>
+</div>
+</div>
+
+<div class="resultado-area">
+    <div class="resultado-header">
+        <h4 id="tituloFaturaFiltro">Compras no Crédito (pendentes)</h4>
+        <div id="filtroBancoAtivo" class="banco-ativo"></div>
+        <div id="filtrosAtivosFatura" class="filtros-ativos"></div>
+    </div>
+
+    <div class="tabela-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th>Banco</th>
+                    <th>Data</th>
+                    <th>Modalidade</th>
+                </tr>
+            </thead>
+            <tbody id="listaFatura"></tbody>
+        </table>
+    </div>
+</div>
+</div>
+
+</div>
+
+<!-- MODAL DE EDIÇÃO -->
+<div id="modalEditar" class="modal" style="display: none;">
+<div class="modal-content">
+<span class="fechar-modal">&times;</span>
+<h2>✏️ Editar Lançamento</h2>
+<form id="formEditar">
+<input type="hidden" id="editarId">
+<input id="editarDescricao" placeholder="Descrição" required>
+<input id="editarValor" type="number" step="0.01" placeholder="Valor" required>
+
+<select id="editarTipo" required>
+<option value="">Tipo</option>
+<option value="entrada">Entrada</option>
+<option value="saida">Saída</option>
+</select>
+
+<select id="editarBanco">
+<option value="">Banco</option>
+<option>Nubank</option>
+<option>Itaú</option>
+<option>Inter</option>
+<option>Santander</option>
+<option>Caixa</option>
+<option>Bradesco</option>
+</select>
+
+<select id="editarModalidade" required>
+<option value="">Modalidade</option>
+<option>Dinheiro</option>
+<option>Débito</option>
+<option>Crédito</option>
+<option>Pix</option>
+<option>VR</option>
+<option>VA</option>
+<option>VT</option>
+</select>
+
+<input id="editarData" type="date" required>
+
+<div class="modal-botoes">
+<button type="submit" class="btn-salvar">Salvar Alterações</button>
+<button type="button" class="btn-cancelar">Cancelar</button>
+</div>
+</form>
+</div>
+</div>
+
+</div> <!-- Fechamento do sistemaPrincipal -->
+
+<script src="script.js"></script>
+</body>
+</html>

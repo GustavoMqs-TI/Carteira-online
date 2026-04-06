@@ -1,0 +1,1260 @@
+/* ================== TELA DE LOGIN ================== */
+
+.tela-login {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.login-container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 420px;
+    animation: slideUp 0.5s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-header h1 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.login-header p {
+    color: #666;
+    font-size: 14px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-weight: bold;
+    color: #555;
+    font-size: 14px;
+}
+
+.input-group input {
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.btn-login {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.login-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.login-links a {
+    color: #667eea;
+    text-decoration: none;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.login-links a:hover {
+    text-decoration: underline;
+}
+
+.demo-info {
+    margin-top: 30px;
+    padding: 15px;
+    background: #f5f6fa;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.demo-info p {
+    margin: 5px 0;
+    font-size: 13px;
+    color: #666;
+}
+
+.demo-info p:first-child {
+    font-weight: bold;
+    color: #333;
+}
+
+/* ================== HEADER DO SISTEMA ================== */
+
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    background: #f5f6fa;
+    border-radius: 10px;
+}
+
+.user-info span {
+    font-weight: bold;
+    color: #333;
+}
+
+.btn-logout {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: white;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.3s ease;
+}
+
+.btn-logout:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(255, 65, 108, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* ================== ABAS ================== */
+
+.abas {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.abas button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #eee;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.abas button:hover {
+    background: #ddd;
+}
+
+.abas .active {
+    background: #333;
+    color: white;
+}
+
+/* ANIMAÇÃO */
+
+.aba {
+    display: none;
+    animation: fade 0.3s ease-in-out;
+}
+
+.aba.ativa {
+    display: block;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================== RESUMO ================== */
+
+.resumo {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.card {
+    flex: 1;
+    padding: 20px;
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+    font-size: 18px;
+}
+
+.card p {
+    font-size: 24px;
+}
+
+.card.entrada {
+    background: linear-gradient(135deg, #00b09b, #96c93d);
+}
+
+.card.saida {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+}
+
+.card.saldo {
+    background: linear-gradient(135deg, #2193b0, #6dd5ed);
+}
+
+/* ================== BENEFÍCIOS ================== */
+
+#abaBeneficios.ativa {
+    display: block;
+}
+
+.beneficio-card {
+    flex: 1;
+    min-width: 250px;
+    padding: 20px;
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+.beneficio-card:hover {
+    transform: translateY(-5px);
+}
+
+.vr-card {
+    background: linear-gradient(135deg, #00b09b, #96c93d);
+}
+
+.va-card {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+}
+
+.vt-card {
+    background: linear-gradient(135deg, #2193b0, #6dd5ed);
+}
+
+.detalhe {
+    font-size: 11px;
+    opacity: 0.8;
+    margin-top: 5px;
+}
+
+/* ================== FORM ================== */
+
+form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+form input,
+form select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    flex: 1;
+    min-width: 120px;
+}
+
+form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #333;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+form button:hover {
+    background: #555;
+}
+
+/* ================== FILTROS ================== */
+
+.checkbox-group {
+    background: #f5f6fa;
+    border-radius: 12px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.filtro-titulo {
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    background: #f5f6fa;
+}
+
+#filtrosContainer {
+    max-height: 500px;
+    overflow: hidden;
+    transition: 0.3s;
+    padding: 0 20px 20px 20px;
+}
+
+#filtrosContainer.fechado {
+    max-height: 0;
+    padding: 0 20px;
+}
+
+/* Container dos filtros */
+#filtroBanco, #filtroModalidade, #filtroTipo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* Estilização dos checkboxes */
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    background: white;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.checkbox-group label:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    background: #f8f9fa;
+}
+
+/* Checkbox personalizado */
+.checkbox-group input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #667eea;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+    background-color: #667eea;
+    border-color: #667eea;
+}
+
+.checkbox-group input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 12px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.checkbox-group input[type="checkbox"]:hover {
+    transform: scale(1.1);
+}
+
+/* Cores específicas para os tipos */
+#filtroTipo label:first-child {
+    border-left: 3px solid #00b09b;
+}
+
+#filtroTipo label:first-child span {
+    color: #00b09b;
+    font-weight: bold;
+}
+
+#filtroTipo label:last-child {
+    border-left: 3px solid #ff416c;
+}
+
+#filtroTipo label:last-child span {
+    color: #ff416c;
+    font-weight: bold;
+}
+
+/* Labels com cores */
+.checkbox-group label span.verde {
+    color: #00b09b;
+    font-weight: bold;
+}
+
+.checkbox-group label span.vermelho {
+    color: #ff416c;
+    font-weight: bold;
+}
+
+/* ================== BOTÕES DE FILTRO (MENORES) ================== */
+
+.botoes-filtro {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#btnAplicarFiltro, #btnLimparFiltro {
+    padding: 6px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+#btnAplicarFiltro {
+    background: #00b09b;
+    color: white;
+}
+
+#btnAplicarFiltro:hover {
+    background: #008f7a;
+    transform: translateY(-1px);
+}
+
+#btnLimparFiltro {
+    background: #ff416c;
+    color: white;
+}
+
+#btnLimparFiltro:hover {
+    background: #e0355a;
+    transform: translateY(-1px);
+}
+
+/* ================== TABELA ================== */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+thead {
+    background: #333;
+    color: white;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:hover {
+    background: #f5f5f5;
+}
+
+/* ================== BOTÃO EXCLUIR ================== */
+
+button.excluir-btn {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: white;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+button.excluir-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(255, 65, 108, 0.4);
+}
+
+button.excluir-btn:active {
+    transform: translateY(0);
+}
+
+/* ================== FATURA ================== */
+
+#abaFatura.ativa {
+    display: block;
+}
+
+.fatura-cards {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.card-nubank {
+    background: linear-gradient(135deg, #6a11cb, #9b59b6);
+}
+
+.card-itau {
+    background: linear-gradient(135deg, #ff8008, #ffb347);
+}
+
+.card-santander {
+    background: linear-gradient(135deg, #cb2d3e, #ef473a);
+}
+
+/* ================== CONTADOR ================== */
+
+#contadorResultados {
+    margin: 10px 0;
+    padding: 8px 12px;
+    background: #f5f6fa;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #666;
+    text-align: center;
+}
+
+/* ================== RESPONSIVO ================== */
+
+@media (max-width: 768px) {
+    .resumo {
+        flex-direction: column;
+    }
+    
+    .fatura-cards {
+        flex-direction: column;
+    }
+    
+    .botoes-filtro {
+        flex-direction: column;
+    }
+    
+    #btnAplicarFiltro, #btnLimparFiltro {
+        width: 100%;
+    }
+}
+
+//* ================== MODAL ================== */
+/* ================== MODAL ================== */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background-color: white;
+    position: relative;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);  /* Centraliza verticalmente */
+    padding: 0;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50%) scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(-50%) scale(1);
+        opacity: 1;
+    }
+}
+
+.fechar-modal {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: 0.3s;
+}
+
+.fechar-modal:hover {
+    color: #ff416c;
+}
+
+.modal-content h2 {
+    padding: 20px 20px 0 20px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#formEditar {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#formEditar input,
+#formEditar select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.modal-botoes {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-salvar {
+    flex: 1;
+    padding: 10px;
+    background: linear-gradient(135deg, #00b09b, #96c93d);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-salvar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,176,155,0.4);
+}
+
+.btn-cancelar {
+    flex: 1;
+    padding: 10px;
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-cancelar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(255,65,108,0.4);
+}
+
+/* Botão editar */
+button.editar-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-right: 5px;
+}
+
+button.editar-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(102,126,234,0.4);
+}
+
+button.editar-btn:active {
+    transform: translateY(0);
+}
+
+/* Container dos botões de ação */
+.acao-botoes {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+/* ================== AJUSTES MOBILE ================== */
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    
+    .acao-botoes {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    button.editar-btn, button.excluir-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    #formEditar {
+        padding: 15px;
+    }
+    
+    .modal-botoes {
+        flex-direction: column;
+    }
+    
+    .btn-salvar, .btn-cancelar {
+        width: 100%;
+    }
+}
+
+/* ================== MODAL DE HISTÓRICO ================== */
+
+.modal-historico {
+    max-width: 700px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-historico h2 {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 1;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.historico-lista {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.historico-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    transition: 0.2s;
+}
+
+.historico-item:hover {
+    background: #f5f6fa;
+}
+
+.historico-descricao {
+    flex: 2;
+    font-weight: 500;
+}
+
+.historico-valor {
+    flex: 1;
+    text-align: right;
+    font-weight: bold;
+}
+
+.historico-data {
+    flex: 1;
+    text-align: center;
+    color: #666;
+    font-size: 12px;
+}
+
+.historico-tipo {
+    flex: 0.5;
+    text-align: center;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+.historico-tipo.entrada {
+    color: #00b09b;
+    background: #e0f7f0;
+}
+
+.historico-tipo.saida {
+    color: #ff416c;
+    background: #ffe0e6;
+}
+
+.historico-resumo {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.historico-resumo p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.historico-total {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.historico-vazio {
+    text-align: center;
+    padding: 40px;
+    color: #999;
+}
+
+/* Indicador de clique */
+.beneficio-card, .card-nubank, .card-itau, .card-santander {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.beneficio-card:hover, .card-nubank:hover, .card-itau:hover, .card-santander:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Scrollbar personalizada para o modal */
+.modal-historico::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-historico::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.modal-historico::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.modal-historico::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Ajuste responsivo para o histórico */
+@media (max-width: 768px) {
+    .historico-item {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .historico-descricao {
+        flex: 100%;
+        order: 1;
+    }
+    
+    .historico-valor {
+        order: 2;
+    }
+    
+    .historico-data {
+        order: 3;
+    }
+    
+    .historico-tipo {
+        order: 4;
+    }
+    
+    .historico-resumo {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* ================== TABELAS DE FILTRO ================== */
+
+#beneficioFiltroAtivo, #filtroBancoAtivo {
+    padding: 8px;
+    background: white;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.beneficio-card, .card-nubank, .card-itau, .card-santander {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.beneficio-card:hover, .card-nubank:hover, .card-itau:hover, .card-santander:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Destaque para o filtro ativo */
+.filtro-ativo {
+    background: rgba(102, 126, 234, 0.1);
+    border-left: 4px solid #667eea;
+}
+
+/* ================== FILTROS DA FATURA E BENEFÍCIOS ================== */
+
+.filtro-container {
+    background: #f5f6fa;
+    border-radius: 12px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.filtro-header {
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f5f6fa;
+    font-weight: bold;
+}
+
+.filtro-header h3 {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+}
+
+.filtros-content {
+    max-height: 500px;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+    padding: 0 20px 20px 20px;
+}
+
+.filtros-content.fechado {
+    max-height: 0;
+    padding: 0 20px;
+}
+
+.filtros-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.filtro-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filtro-group label {
+    font-weight: bold;
+    color: #555;
+    font-size: 13px;
+}
+
+/* Grupo de período e valor em linha */
+.filtro-datas, .filtro-valores {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.filtro-datas input, .filtro-valores input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 13px;
+    transition: all 0.3s ease;
+}
+
+.filtro-datas span, .filtro-valores span {
+    color: #999;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+/* Campo de descrição em linha completa */
+.filtro-group:has(.filtro-input-full) {
+    grid-column: span 2;
+}
+
+.filtro-input-full {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 13px;
+    transition: all 0.3s ease;
+}
+
+/* Melhorar espaçamento dos selects */
+.filtro-select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 13px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Foco nos campos */
+.filtro-datas input:focus, 
+.filtro-valores input:focus,
+.filtro-input-full:focus, 
+.filtro-select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+/* Botões de ação */
+.filtro-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    padding-top: 20px;
+    margin-top: 10px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.btn-aplicar, .btn-limpar {
+    padding: 8px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-aplicar {
+    background: linear-gradient(135deg, #00b09b, #96c93d);
+    color: white;
+}
+
+.btn-aplicar:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 176, 155, 0.3);
+}
+
+.btn-limpar {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: white;
+}
+
+.btn-limpar:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(255, 65, 108, 0.3);
+}
+
+/* ================== RESPONSIVO PARA OS FILTROS ================== */
+
+@media (max-width: 768px) {
+    .filtros-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .filtro-group:has(.filtro-input-full) {
+        grid-column: span 1;
+    }
+    
+    .filtro-datas, .filtro-valores {
+        flex-direction: column;
+    }
+    
+    .filtro-datas span, .filtro-valores span {
+        display: none;
+    }
+    
+    .filtro-actions {
+        flex-direction: column;
+    }
+    
+    .btn-aplicar, .btn-limpar {
+        width: 100%;
+    }
+}
+
+/* ================== ÁREA DE RESULTADOS ================== */
+
+.resultado-area {
+    margin-top: 20px;
+    padding: 20px;
+    background: #fafafa;
+    border-radius: 12px;
+}
+
+.resultado-header {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.resultado-header h4 {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.banco-ativo {
+    font-weight: bold;
+    color: #667eea;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.filtros-ativos {
+    background: #fff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    color: #666;
+    border: 1px solid #e0e0e0;
+    display: none;
+}
+
+.filtros-ativos:not(:empty) {
+    display: block;
+}
+
+.tabela-container {
+    overflow-x: auto;
+}
+
+/* ================== RESPONSIVO ================== */
+
+@media (max-width: 768px) {
+    .filtros-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .filtro-datas, .filtro-valores {
+        flex-direction: column;
+    }
+    
+    .filtro-datas span, .filtro-valores span {
+        display: none;
+    }
+    
+    .filtro-actions {
+        flex-direction: column;
+    }
+    
+    .btn-aplicar, .btn-limpar {
+        width: 100%;
+    }
+    
+    .resultado-area {
+        padding: 15px;
+    }
+}
+
+/* Garantir que o modal comece escondido */
+.modal {
+    display: none !important;
+}
+
+.modal[style*="display: block"] {
+    display: flex !important;
+}
