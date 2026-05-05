@@ -26,7 +26,6 @@ h1 {
     color: #333;
 }
 
-/* TELA DE LOGIN */
 .tela-login {
     position: fixed;
     top: 0;
@@ -150,7 +149,6 @@ h1 {
     color: #666;
 }
 
-/* HEADER */
 .user-info {
     display: flex;
     justify-content: space-between;
@@ -208,7 +206,6 @@ h1 {
     transform: translateY(-1px);
 }
 
-/* ABAS */
 .abas {
     display: flex;
     gap: 10px;
@@ -249,7 +246,6 @@ h1 {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* RESUMO */
 .resumo {
     display: flex;
     gap: 20px;
@@ -302,7 +298,6 @@ h1 {
     font-size: 24px;
 }
 
-/* FORM */
 form {
     display: flex;
     gap: 10px;
@@ -325,9 +320,15 @@ form button {
     background: #333;
     color: white;
     cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
 }
 
-/* FILTROS GERAIS */
+form button:hover {
+    background: #555;
+    transform: translateY(-2px);
+}
+
 .checkbox-group {
     background: #f5f6fa;
     border-radius: 12px;
@@ -405,7 +406,6 @@ form button {
     transform: translate(-50%, -50%);
 }
 
-/* FILTROS DE TIPO */
 #filtroTipo {
     display: flex;
     flex-wrap: wrap;
@@ -425,29 +425,17 @@ form button {
     border: 1px solid #ddd;
     font-size: 14px;
     font-weight: 500;
-}
-
-#filtroTipo label:first-child {
-    border-left: 4px solid #00b09b;
-}
-
-#filtroTipo label:last-child {
-    border-left: 4px solid #ff416c;
-}
-
-#filtroTipo label:first-child span {
-    color: #00b09b;
-    font-weight: bold;
-}
-
-#filtroTipo label:last-child span {
-    color: #ff416c;
-    font-weight: bold;
+    border-left-width: 4px;
+    border-left-style: solid;
 }
 
 #filtroTipo label:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+#filtroTipo label span {
+    font-weight: bold;
 }
 
 .botoes-filtro {
@@ -456,17 +444,6 @@ form button {
     margin: 10px 0;
 }
 
-#btnAplicarFiltro, #btnLimparFiltro {
-    padding: 6px 16px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-#btnAplicarFiltro { background: #00b09b; color: white; }
-#btnLimparFiltro { background: #ff416c; color: white; }
-
-/* TABELA */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -510,7 +487,6 @@ button.excluir-btn {
     justify-content: center;
 }
 
-/* CARDS */
 .fatura-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -549,7 +525,6 @@ button.excluir-btn {
     left: 100%;
 }
 
-/* ESTILOS DOS CARDS DE FATURA */
 .fatura-text {
     font-size: 14px;
     margin: 5px 0;
@@ -576,7 +551,6 @@ button.excluir-btn {
     margin-top: 6px;
 }
 
-/* Ajuste para os cards */
 .fatura-cards .card {
     display: flex;
     flex-direction: column;
@@ -588,7 +562,6 @@ button.excluir-btn {
     font-size: 16px;
 }
 
-/* FILTROS CONTAINER */
 .filtro-container {
     background: #f5f6fa;
     border-radius: 12px;
@@ -670,16 +643,6 @@ button.excluir-btn {
     border-top: 1px solid #e0e0e0;
 }
 
-.btn-aplicar, .btn-limpar {
-    padding: 8px 24px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.btn-aplicar { background: linear-gradient(135deg, #00b09b, #96c93d); color: white; }
-.btn-limpar { background: linear-gradient(135deg, #ff416c, #ff4b2b); color: white; }
-
 .resultado-area {
     margin-top: 20px;
     padding: 20px;
@@ -703,7 +666,6 @@ button.excluir-btn {
     overflow-x: auto;
 }
 
-/* MODAL */
 .modal {
     display: none;
     position: fixed;
@@ -752,7 +714,6 @@ button.excluir-btn {
 .btn-salvar { background: linear-gradient(135deg, #00b09b, #96c93d); color: white; }
 .btn-cancelar { background: linear-gradient(135deg, #ff416c, #ff4b2b); color: white; }
 
-/* CONFIGURAÇÕES */
 .config-section {
     margin-bottom: 25px;
     padding: 20px;
@@ -851,7 +812,6 @@ button.excluir-btn {
 .btn-perfil { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
 .btn-perfil-voltar { background: #333; color: white; }
 
-/* PERFIL ESTILIZADO */
 .perfil-info {
     background: #f8f9fa;
     padding: 20px;
@@ -913,7 +873,6 @@ button.excluir-btn {
     border: 1px solid #e0e0e0;
 }
 
-/* TELA DE CORES */
 .tela-cores-container {
     max-width: 650px;
     max-height: 85vh;
@@ -1020,9 +979,6 @@ button.excluir-btn {
     flex-shrink: 0;
 }
 
-/* ========== NOVAS FUNCIONALIDADES ========== */
-
-/* DASHBOARD GRÁFICOS */
 .dashboard-container {
     padding: 20px;
 }
@@ -1059,92 +1015,13 @@ button.excluir-btn {
     max-height: 300px;
 }
 
-/* FILTROS DOS GRÁFICOS */
-.filtros-graficos {
-    background: #f8f9fa;
-    border-radius: 12px;
-    padding: 15px 20px;
-    margin-bottom: 20px;
-}
-
-.filtros-graficos h4 {
-    margin-bottom: 12px;
-    color: #333;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.grupo-checkbox-grafico {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    align-items: center;
-}
-
-.grupo-checkbox-grafico label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    padding: 6px 14px;
-    border-radius: 20px;
-    background: white;
-    border: 1px solid #ddd;
-    transition: all 0.3s ease;
-    font-size: 13px;
-    font-weight: 500;
-}
-
-.grupo-checkbox-grafico label:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    border-color: #667eea;
-}
-
-.grupo-checkbox-grafico input[type="checkbox"] {
-    appearance: none;
-    width: 16px;
-    height: 16px;
-    border: 2px solid #667eea;
-    border-radius: 4px;
-    cursor: pointer;
-    position: relative;
-}
-
-.grupo-checkbox-grafico input[type="checkbox"]:checked {
-    background-color: #667eea;
-}
-
-.grupo-checkbox-grafico input[type="checkbox"]:checked::after {
-    content: '✓';
-    position: absolute;
-    color: white;
-    font-size: 10px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.checkbox-entrada span {
-    color: #00b09b;
-    font-weight: bold;
-}
-
-.checkbox-saida span {
-    color: #ff416c;
-    font-weight: bold;
-}
-
 .btn-aplicar-grafico {
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
     border: none;
-    padding: 8px 20px;
-    border-radius: 20px;
+    padding: 10px 24px;
+    border-radius: 25px;
     cursor: pointer;
-    font-size: 13px;
     font-weight: bold;
     transition: all 0.3s ease;
     margin-left: auto;
@@ -1155,7 +1032,6 @@ button.excluir-btn {
     box-shadow: 0 3px 10px rgba(102,126,234,0.4);
 }
 
-/* METAS E ORÇAMENTO */
 .metas-container {
     display: flex;
     flex-direction: column;
@@ -1264,7 +1140,6 @@ button.excluir-btn {
     border-radius: 8px;
 }
 
-/* ORÇAMENTO */
 .orcamento-container {
     background: #f8f9fa;
     padding: 20px;
@@ -1355,7 +1230,6 @@ button.excluir-btn {
     font-weight: bold;
 }
 
-/* PARCELAS */
 .parcelas-container, .recorrentes-container {
     padding: 20px;
 }
@@ -1406,7 +1280,94 @@ button.excluir-btn {
     font-size: 12px;
 }
 
-/* RESPONSIVO */
+.btn-aplicar,
+#btnAplicarFiltro,
+#btnAplicarFiltroBeneficio,
+#btnAplicarFiltroFatura,
+.botoes-filtro button:first-child,
+.filtro-actions button:first-child {
+    background: linear-gradient(135deg, #00b09b, #96c93d) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 8px 24px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-aplicar:hover,
+#btnAplicarFiltro:hover,
+#btnAplicarFiltroBeneficio:hover,
+#btnAplicarFiltroFatura:hover,
+.botoes-filtro button:first-child:hover,
+.filtro-actions button:first-child:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0,176,155,0.3) !important;
+}
+
+.btn-limpar,
+#btnLimparFiltro,
+#btnLimparFiltroBeneficio,
+#btnLimparFiltroFatura,
+.botoes-filtro button:last-child,
+.filtro-actions button:last-child {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 8px 24px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-limpar:hover,
+#btnLimparFiltro:hover,
+#btnLimparFiltroBeneficio:hover,
+#btnLimparFiltroFatura:hover,
+.botoes-filtro button:last-child:hover,
+.filtro-actions button:last-child:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(255,65,108,0.3) !important;
+}
+
+/* Estilo para os checkboxes dos gráficos */
+#filtroEntradaVsSaida,
+#filtroSaidaVsSaida,
+#filtroGraficoEntrada,
+#filtroGraficoSaida {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    width: 18px !important;
+    height: 18px !important;
+    border: 2px solid #667eea !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    position: relative !important;
+    background: white !important;
+}
+
+#filtroEntradaVsSaida:checked,
+#filtroSaidaVsSaida:checked,
+#filtroGraficoEntrada:checked,
+#filtroGraficoSaida:checked {
+    background-color: #667eea !important;
+}
+
+#filtroEntradaVsSaida:checked::after,
+#filtroSaidaVsSaida:checked::after,
+#filtroGraficoEntrada:checked::after,
+#filtroGraficoSaida:checked::after {
+    content: '✓' !important;
+    position: absolute !important;
+    color: white !important;
+    font-size: 12px !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
 @media (max-width: 768px) {
     .container { padding: 15px; }
     .resumo { flex-direction: column; }
@@ -1426,8 +1387,7 @@ button.excluir-btn {
     .item-cor-modern { flex-wrap: wrap; }
     .chart-row { flex-direction: column; }
     .chart-box { min-width: 100%; }
-    .grupo-checkbox-grafico { flex-direction: column; align-items: stretch; }
-    .btn-aplicar-grafico { margin-left: 0; margin-top: 10px; }
+    .btn-aplicar-grafico { margin-left: 0 !important; margin-top: 10px; width: 100%; text-align: center; }
     .orcamento-item { flex-direction: column; align-items: flex-start; }
     .orcamento-progresso { width: 100%; margin: 8px 0; }
     .add-orcamento { flex-direction: column; }
@@ -1461,4 +1421,248 @@ button.excluir-btn {
     .card p { font-size: 18px; }
     .btn-cores, .btn-perfil-sistema, .btn-logout, .btn-export { padding: 4px 10px; font-size: 11px; }
     .user-info span { font-size: 14px; }
+}
+/* ============================================
+   ESTILOS DO MODAL DE EXPORTAÇÃO AVANÇADA
+   ============================================ */
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 12px 12px 0 0;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.3em;
+}
+
+.modal-header .fechar-modal {
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+    color: white;
+}
+
+.modal-header .fechar-modal:hover {
+    transform: scale(1.2);
+}
+
+.modal-body {
+    padding: 20px;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.modal-footer {
+    padding: 15px 20px;
+    background: #f8f9fa;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    border-top: 1px solid #e0e0e0;
+    border-radius: 0 0 12px 12px;
+}
+
+.opcoes-group {
+    margin-bottom: 20px;
+}
+
+.opcao-principal {
+    display: flex;
+    align-items: center;
+    background: #f0f0f0;
+    padding: 12px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-bottom: 15px;
+}
+
+.opcao-principal:hover {
+    background: #e8e8e8;
+}
+
+.opcao-principal input {
+    margin-right: 12px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.opcao-texto {
+    font-weight: bold;
+    font-size: 1em;
+    color: #333;
+}
+
+.divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #ddd, transparent);
+    margin: 15px 0;
+}
+
+.checklist {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid #e0e0e0;
+}
+
+.checkbox-item:hover {
+    background: #e9ecef;
+    border-color: #667eea;
+}
+
+.checkbox-item input {
+    margin-right: 10px;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.checkbox-item span {
+    color: #555;
+    font-size: 0.9em;
+}
+
+.configuracoes {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+.campo {
+    margin-bottom: 12px;
+}
+
+.campo:last-child {
+    margin-bottom: 0;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.85em;
+}
+
+.campo select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 13px;
+    background: white;
+    cursor: pointer;
+}
+
+.btn-exportar-modal {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.btn-exportar-modal:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Loading */
+.loading {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2100;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-content {
+    background: white;
+    padding: 25px 35px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+.spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #667eea;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-content p {
+    color: #333;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.loading-content small {
+    color: #999;
+    font-size: 0.75em;
+}
+
+/* Responsividade do modal */
+@media (max-width: 768px) {
+    .checklist {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+    }
+    
+    .modal-header h2 {
+        font-size: 1.1em;
+    }
+    
+    .modal-footer {
+        flex-direction: column;
+    }
+    
+    .btn-cancelar, .btn-exportar-modal {
+        width: 100%;
+    }
 }

@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Controle Financeiro</title>
+    <title>💰 Controle Financeiro</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <!-- Biblioteca SheetJS para exportar Excel -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
 </head>
 <body>
 
@@ -13,16 +15,16 @@
 <div id="telaLogin" class="tela-login">
     <div class="login-container">
         <div class="login-header">
-            <h1>💰 Controle Financeiro</h1>
+            <h1>Controle Financeiro</h1>
             <p>Gerencie suas finanças com segurança</p>
         </div>
         <form id="formLogin" class="login-form">
             <div class="input-group">
-                <label>📧 E-mail</label>
+                <label>E-mail</label>
                 <input type="email" id="loginEmail" placeholder="seu@email.com" required>
             </div>
             <div class="input-group">
-                <label>🔒 Senha</label>
+                <label>Senha</label>
                 <input type="password" id="loginSenha" placeholder="Digite sua senha" required>
             </div>
             <button type="submit" class="btn-login">Entrar</button>
@@ -33,8 +35,8 @@
         </form>
         <div class="demo-info">
             <p>📱 Conta Demo:</p>
-            <p>Email: demo@financeiro.com</p>
-            <p>Senha: 123456</p>
+            <p>📧 Email: demo@financeiro.com</p>
+            <p>🔑 Senha: 123456</p>
         </div>
     </div>
 </div>
@@ -43,7 +45,7 @@
 <div id="telaRegistro" class="tela-login" style="display: none;">
     <div class="login-container">
         <div class="login-header">
-            <h1>💰 Criar Conta</h1>
+            <h1>📝 Criar Conta</h1>
             <p>Cadastre-se para começar</p>
         </div>
         <form id="formRegistro" class="login-form">
@@ -188,7 +190,7 @@
                 </div>
                 <button type="button" onclick="adicionarItemConfig('listaModalidadesConfig')" class="btn-adicionar">+ Adicionar Forma de Pagamento</button>
             </div>
-            <button type="submit" class="btn-login">💾 Salvar e Continuar</button>
+            <button type="submit" class="btn-login">Salvar e Continuar</button>
         </form>
     </div>
 </div>
@@ -201,9 +203,9 @@
             <p>Configure suas preferências</p>
         </div>
         <div class="perfil-menu">
-            <button onclick="abrirConfiguracoes()" class="btn-perfil">⚙️ Editar Configurações</button>
-            <button onclick="abrirPersonalizacaoCores()" class="btn-perfil">🎨 Personalizar Cores</button>
-            <button onclick="fecharPerfil()" class="btn-perfil-voltar">← Voltar ao Sistema</button>
+            <button onclick="abrirConfiguracoes()" class="btn-perfil">Editar Configurações</button>
+            <button onclick="abrirPersonalizacaoCores()" class="btn-perfil">Personalizar Cores</button>
+            <button onclick="fecharPerfil()" class="btn-perfil-voltar">Voltar ao Sistema</button>
         </div>
         <div id="perfilInfo" class="perfil-info"></div>
     </div>
@@ -239,12 +241,12 @@
                 <div id="listaCoresBeneficios" class="lista-cores-modern"></div>
             </div>
             <div class="section-cores">
-                <h3>💳 Cards de Bancos</h3>
+                <h3>🏦 Cards de Bancos</h3>
                 <div id="listaCoresBancos" class="lista-cores-modern"></div>
             </div>
             <div class="modal-botoes" style="margin-top: 20px; gap: 12px;">
-                <button type="submit" class="btn-salvar" style="flex: 1; padding: 10px;">💾 Salvar Cores</button>
-                <button type="button" class="btn-cancelar" style="flex: 1; padding: 10px;" onclick="fecharTelaCores()">❌ Cancelar</button>
+                <button type="submit" class="btn-salvar" style="flex: 1; padding: 10px;">Salvar Cores</button>
+                <button type="button" class="btn-cancelar" style="flex: 1; padding: 10px;" onclick="fecharTelaCores()">Cancelar</button>
             </div>
         </form>
     </div>
@@ -258,12 +260,12 @@
             <div>
                 <button onclick="abrirPersonalizacaoCores()" class="btn-cores">🎨 Cores</button>
                 <button onclick="abrirPerfil()" class="btn-perfil-sistema">👤 Perfil</button>
-                <button onclick="exportarExcel()" class="btn-export">📊 Exportar</button>
+                <button onclick="abrirModalExportacao()" class="btn-export">📊 Exportar</button>
                 <button onclick="logout()" class="btn-logout">🚪 Sair</button>
             </div>
         </div>
 
-        <h1>💰 Controle Financeiro</h1>
+        <h1>Controle Financeiro</h1>
 
         <div class="abas">
             <button id="btnGeral" class="active" onclick="trocarAba('geral')">Geral</button>
@@ -285,7 +287,7 @@
 
             <form id="formGasto">
                 <input id="descricao" placeholder="Descrição" required>
-                <input id="valor" type="number" step="0.01" placeholder="Valor" required>
+                <input id="valor" type="text" placeholder="Valor" required>
                 <select id="tipo" required>
                     <option value="">Tipo</option>
                     <option value="entrada">Entrada</option>
@@ -308,8 +310,8 @@
                     <div>
                         <label>Tipo</label>
                         <div id="filtroTipo">
-                            <label><input type="checkbox" value="entrada"> <span class="verde">Entrada</span></label>
-                            <label><input type="checkbox" value="saida"> <span class="vermelho">Saída</span></label>
+                            <label><input type="checkbox" value="entrada"> <span>Entrada</span></label>
+                            <label><input type="checkbox" value="saida"> <span>Saída</span></label>
                         </div>
                     </div>
                     <div class="botoes-filtro">
@@ -357,9 +359,9 @@
                         <div class="filtro-group">
                             <label>💰 Valor</label>
                             <div class="filtro-valores">
-                                <input type="number" step="0.01" id="filtroBeneficioValorMin" placeholder="Mínimo">
+                                <input type="text" id="filtroBeneficioValorMin" placeholder="Mínimo">
                                 <span>até</span>
-                                <input type="number" step="0.01" id="filtroBeneficioValorMax" placeholder="Máximo">
+                                <input type="text" id="filtroBeneficioValorMax" placeholder="Máximo">
                             </div>
                         </div>
                         <div class="filtro-group">
@@ -396,7 +398,7 @@
                     <div id="beneficioFiltroAtivo" class="banco-ativo"></div>
                 </div>
                 <div class="tabela-container">
-                    </table>
+                    <table>
                         <thead>
                             <tr>
                                 <th>Descrição</th>
@@ -432,9 +434,9 @@
                         <div class="filtro-group">
                             <label>💰 Valor</label>
                             <div class="filtro-valores">
-                                <input type="number" step="0.01" id="filtroValorMin" placeholder="Mínimo">
+                                <input type="text" id="filtroValorMin" placeholder="Mínimo">
                                 <span>até</span>
-                                <input type="number" step="0.01" id="filtroValorMax" placeholder="Máximo">
+                                <input type="text" id="filtroValorMax" placeholder="Máximo">
                             </div>
                         </div>
                         <div class="filtro-group">
@@ -482,34 +484,48 @@
         <!-- ABA GRÁFICOS -->
         <div id="abaGraficos" class="aba">
             <div class="dashboard-container">
-                <div class="filtros-graficos">
-                    <h4>📊 Filtrar Dados dos Gráficos</h4>
-                    <div class="grupo-checkbox-grafico">
-                        <label class="checkbox-entrada">
-                            <input type="checkbox" id="filtroGraficoEntrada" checked> <span>💰 Entradas</span>
-                        </label>
-                        <label class="checkbox-saida">
-                            <input type="checkbox" id="filtroGraficoSaida" checked> <span>💸 Saídas</span>
-                        </label>
-                        <label>
-                            <input type="checkbox" id="filtroGraficoSaldo" checked> <span>⚖️ Saldo</span>
-                        </label>
-                        <button id="btnAplicarFiltroGrafico" class="btn-aplicar-grafico">📈 Aplicar Filtro</button>
-                    </div>
-                </div>
                 <div class="chart-row">
                     <div class="chart-box">
                         <h3>📊 Entradas vs Saídas</h3>
+                        <div style="margin-bottom: 20px;">
+                            <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center; background: #f8f9fa; padding: 15px 20px; border-radius: 12px;">
+                                <label id="labelEntradaVsSaida" style="display: inline-flex; align-items: center; gap: 10px; cursor: pointer; padding: 10px 30px; border-radius: 25px; background: white; border: 1px solid #ddd; border-left-width: 4px; border-left-style: solid;">
+                                    <input type="checkbox" id="filtroEntradaVsSaida" checked style="width: 18px; height: 18px; margin: 0; cursor: pointer;">
+                                    <span id="spanEntradaVsSaida" style="font-weight: bold;">Entradas</span>
+                                </label>
+                                <label id="labelSaidaVsSaida" style="display: inline-flex; align-items: center; gap: 10px; cursor: pointer; padding: 10px 30px; border-radius: 25px; background: white; border: 1px solid #ddd; border-left-width: 4px; border-left-style: solid;">
+                                    <input type="checkbox" id="filtroSaidaVsSaida" checked style="width: 18px; height: 18px; margin: 0; cursor: pointer;">
+                                    <span id="spanSaidaVsSaida" style="font-weight: bold;">Saídas</span>
+                                </label>
+                            </div>
+                        </div>
                         <canvas id="chartEntradaSaida"></canvas>
                     </div>
+                </div>
+
+                <div class="chart-row">
                     <div class="chart-box">
                         <h3>🥧 Gastos por Categoria</h3>
                         <canvas id="chartCategorias"></canvas>
                     </div>
                 </div>
+
                 <div class="chart-row">
                     <div class="chart-box full-width">
                         <h3>📈 Evolução Mensal</h3>
+                        <div style="margin-bottom: 20px;">
+                            <div id="filtrosEvolucaoMensal" style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center; background: #f8f9fa; padding: 15px 20px; border-radius: 12px;">
+                                <label id="labelEntradaGrafico" style="display: inline-flex; align-items: center; gap: 10px; cursor: pointer; padding: 10px 30px; border-radius: 25px; background: white; border: 1px solid #ddd; border-left-width: 4px; border-left-style: solid;">
+                                    <input type="checkbox" id="filtroGraficoEntrada" checked style="width: 18px; height: 18px; margin: 0; cursor: pointer;">
+                                    <span id="spanEntradaGrafico" style="font-weight: bold;">Entradas</span>
+                                </label>
+                                <label id="labelSaidaGrafico" style="display: inline-flex; align-items: center; gap: 10px; cursor: pointer; padding: 10px 30px; border-radius: 25px; background: white; border: 1px solid #ddd; border-left-width: 4px; border-left-style: solid;">
+                                    <input type="checkbox" id="filtroGraficoSaida" checked style="width: 18px; height: 18px; margin: 0; cursor: pointer;">
+                                    <span id="spanSaidaGrafico" style="font-weight: bold;">Saídas</span>
+                                </label>
+                                <button id="btnAplicarFiltroGrafico" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 10px 24px; border-radius: 25px; cursor: pointer; font-weight: bold; margin-left: auto;">Aplicar Filtro</button>
+                            </div>
+                        </div>
                         <canvas id="chartEvolucao"></canvas>
                     </div>
                 </div>
@@ -539,7 +555,7 @@
                         <p>Estabeleça um objetivo financeiro e acompanhe seu progresso</p>
                     </div>
                     <div class="meta-input-group">
-                        <input type="number" id="metaValor" placeholder="R$ 0,00" step="0.01">
+                        <input type="text" id="metaValor" placeholder="R$ 0,00">
                         <button onclick="salvarMeta()" class="btn-meta-salvar">Definir Meta</button>
                     </div>
                     <div class="progress-container">
@@ -557,7 +573,7 @@
                         <select id="categoriaOrcamento">
                             <option value="">Selecione uma categoria</option>
                         </select>
-                        <input type="number" id="valorOrcamento" placeholder="R$ 0,00" step="0.01">
+                        <input type="text" id="valorOrcamento" placeholder="R$ 0,00">
                         <button onclick="adicionarOrcamento()" class="btn-adicionar">+ Adicionar Limite</button>
                     </div>
                 </div>
@@ -569,11 +585,11 @@
             <div class="parcelas-container">
                 <form id="formParcelado">
                     <input id="parcDescricao" placeholder="Descrição" required>
-                    <input id="parcValorTotal" type="number" step="0.01" placeholder="Valor total" required>
+                    <input id="parcValorTotal" type="text" placeholder="Valor total" required>
                     <input id="parcNumero" type="number" placeholder="Número de parcelas" required>
                     <select id="parcBanco" required><option value="">Banco</option></select>
                     <input id="parcData" type="date" required>
-                    <button type="submit">💳 Adicionar Compra Parcelada</button>
+                    <button type="submit">Adicionar Compra Parcelada</button>
                 </form>
                 <div class="parcelas-list">
                     <h3>📋 Compras Parceladas</h3>
@@ -591,7 +607,7 @@
             <div class="recorrentes-container">
                 <form id="formRecorrente">
                     <input id="recDescricao" placeholder="Descrição" required>
-                    <input id="recValor" type="number" step="0.01" placeholder="Valor" required>
+                    <input id="recValor" type="text" placeholder="Valor" required>
                     <select id="recTipo" required>
                         <option value="saida">Saída</option>
                         <option value="entrada">Entrada</option>
@@ -612,14 +628,105 @@
                         <option value="28">28</option><option value="29">29</option><option value="30">30</option>
                         <option value="31">31</option>
                     </select>
-                    <button type="submit">🔄 Adicionar Despesa Recorrente</button>
+                    <button type="submit">Adicionar Despesa Recorrente</button>
                 </form>
                 <div class="recorrentes-list">
                     <h3>📋 Despesas Recorrentes</h3>
                     <div id="listaRecorrentes"></div>
-                </div><br>
-                <button onclick="executarRecorrentes()" class="btn-aplicar">🔄 Processar Recorrentes do Mês</button>
+                </div>
+                <br>
+                <button onclick="executarRecorrentes()" class="btn-aplicar">Processar Recorrentes do Mês</button>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL DE EXPORTAÇÃO AVANÇADA -->
+<div id="modalExportar" class="modal" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>📤 Exportar Dados Financeiros</h2>
+            <span class="fechar-modal" onclick="fecharModalExportacao()">&times;</span>
+        </div>
+        
+        <div class="modal-body">
+            <div class="opcoes-group">
+                <label class="opcao-principal">
+                    <input type="checkbox" id="exportarTodos"> 
+                    <span class="opcao-texto">📦 Exportar todos os dados</span>
+                </label>
+                
+                <div class="divider"></div>
+                
+                <div class="checklist">
+                    <label class="checkbox-item">
+                        <input type="checkbox" class="opcao-item" value="geral" checked>
+                        <span>📊 Geral (transações)</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" class="opcao-item" value="beneficios">
+                        <span>🎁 Benefícios</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" class="opcao-item" value="fatura">
+                        <span>💳 Fatura do cartão</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" class="opcao-item" value="graficos">
+                        <span>📈 Dados dos gráficos</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" class="opcao-item" value="historico">
+                        <span>📜 Histórico de alterações</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" class="opcao-item" value="categorias">
+                        <span>🏷️ Categorias</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" class="opcao-item" value="metas">
+                        <span>🎯 Metas financeiras</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" class="opcao-item" value="orcamentos">
+                        <span>💰 Orçamentos mensais</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" class="opcao-item" value="parcelas">
+                        <span>📦 Compras parceladas</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" class="opcao-item" value="recorrentes">
+                        <span>🔄 Despesas recorrentes</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="configuracoes">
+                <div class="campo">
+                    <label for="formatoExport">📁 Formato de exportação:</label>
+                    <select id="formatoExport">
+                        <option value="excel">Microsoft Excel (.xlsx)</option>
+                        <option value="csv">CSV (.csv)</option>
+                    </select>
+                </div>
+                
+                <div class="campo">
+                    <label for="periodoExport">📅 Período dos dados:</label>
+                    <select id="periodoExport">
+                        <option value="mes_atual">Mês atual</option>
+                        <option value="ultimos_30">Últimos 30 dias</option>
+                        <option value="ultimos_90">Últimos 90 dias</option>
+                        <option value="ano_atual">Ano atual</option>
+                        <option value="tudo">Todo histórico</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-footer">
+            <button class="btn-cancelar" onclick="fecharModalExportacao()">Cancelar</button>
+            <button class="btn-exportar-modal" id="btnExportarConfirmar">📥 Exportar agora</button>
         </div>
     </div>
 </div>
@@ -632,7 +739,7 @@
         <form id="formEditar">
             <input type="hidden" id="editarId">
             <input id="editarDescricao" placeholder="Descrição" required>
-            <input id="editarValor" type="number" step="0.01" placeholder="Valor" required>
+            <input id="editarValor" type="text" placeholder="Valor" required>
             <select id="editarTipo" required>
                 <option value="">Tipo</option>
                 <option value="entrada">Entrada</option>
@@ -646,6 +753,15 @@
                 <button type="button" class="btn-cancelar">Cancelar</button>
             </div>
         </form>
+    </div>
+</div>
+
+<!-- LOADING -->
+<div id="loading" class="loading">
+    <div class="loading-content">
+        <div class="spinner"></div>
+        <p>Exportando dados...</p>
+        <small>Por favor, aguarde</small>
     </div>
 </div>
 
